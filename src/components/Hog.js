@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Hog() {
 
@@ -6,7 +6,7 @@ function Hog() {
 
     return (
         <div className="Hog">
-			
+			<p>I'm a Hog!</p>
 		</div>
     )
 }
