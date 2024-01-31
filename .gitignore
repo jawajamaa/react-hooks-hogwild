@@ -24,3 +24,6 @@ yarn-error.log*
 
 # Ignore ESLint files
 .eslintcache
+
+# Ignore Large Files
+Hogwild-Layout-Large-Docs
