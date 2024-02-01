@@ -12,8 +12,9 @@ function HogDisplay({ hogState, setHogState }) {
 			{hogState.map(hog=>(
                 <Hog 
                 key = { hog.name }
-                name = { hog.name }
-                image = { hog.image }
+                hog = { hog }
+                hogState = { hogState }
+                setHogState = { setHogState }
                 />
             ))}
 		</div>
