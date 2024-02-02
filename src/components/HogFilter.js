@@ -5,29 +5,6 @@ function HogFilter({ hogs, hogState, setHogState }) {
 const [isSorted, setIsSorted] = useState("");
 const [isGreased, setIsGreased] = useState(false);
     
-    const filterHogGrease = () => (
-        hogs.filter(hog=>(
-            hog.greased === true
-        )).map(hog=>(
-            <HogDisplay  
-                key = { hog.name }
-                hog = { hog }
-                hogState = { hogState }
-                setHogState = { setHogState }
-            />
-        ))
-    );
-
-    const initHogMap = () => (
-        hogs.map(hog=>(
-            <HogDisplay  
-                key = { hog.name }
-                hog = { hog }
-                hogState = { hogState }
-                setHogState = { setHogState }
-            />
-        ))
-    );
 
     function handleGreasedChange() {
         setIsGreased(!isGreased);
@@ -37,9 +14,16 @@ const [isGreased, setIsGreased] = useState(false);
         setIsSorted(event.target.value);
     }
 
-    const nameSortedHogs = 
-        [...hogs].sort((a,b) => {
-             a = a.name.toLowerCase();
+
+    const hogsToDisplay = hogs.filter((hog)=> {
+        if (isGreased === false) {
+            return true
+        } else {
+            return (hog.greased === true )
+        }
+    }).sort((a,b)=>{
+        if (isSorted === "name") {
+            a = a.name.toLowerCase();
              b = b.name.toLowerCase();
              console.log(a,b)
             if (a < b){
@@ -49,24 +33,22 @@ const [isGreased, setIsGreased] = useState(false);
                 return 1
             }
             return 0
-        })
+        }
+        if (isSorted === "weight") {
+            a = a.weight
+            b = b.weight
+           if (a < b){
+               return -1
+           }
+           if (a > b){
+               return 1
+           }
+           return 0
+        }
+    })
 
-    const weightSortedHogs =
-        [...hogs].sort((a,b) => {
-             a = a.weight
-             b = b.weight
-            if (a < b){
-                return -1
-            }
-            if (a > b){
-                return 1
-            }
-            return 0
-        })
+    console.log(hogsToDisplay);
 
-
-    console.log(nameSortedHogs);
-    console.log(weightSortedHogs);
 
     return (
         <>
@@ -83,7 +65,15 @@ const [isGreased, setIsGreased] = useState(false);
                </div> 
             </div>
             <div className="HogFilter">
-                {!isGreased ? initHogMap() : filterHogGrease() }
+                {/* {!isGreased ? initHogMap() : filterHogGrease() } */}
+                {hogsToDisplay.map(hog=>(
+                    <HogDisplay  
+                    key = { hog.name }
+                    hog = { hog }
+                    hogState = { hogState }
+                    setHogState = { setHogState }
+                    />
+                ))}
 		    </div>
         </>
     )
