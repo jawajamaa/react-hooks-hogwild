@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import Hog from "./Hog";
 
-function HogDisplay({ hogState, setHogState }) {
+function HogDisplay({ hog, hogState, setHogState }) {
 
 
 
 
     return (
         <div className="HogDisplay">
-        {/* // iterate through and pass down to Hog component to render each card.  And, destructure hogsArray? */}
-			{hogState.map(hog=>(
-                <Hog 
-                key = { hog.name }
+            <Hog
                 hog = { hog }
                 hogState = { hogState }
                 setHogState = { setHogState }
-                />
-            ))}
+            />
 		</div>
     )
 }

@@ -13,7 +13,8 @@ function App() {
 	return (
 		<div className="App">
 			<Nav />
-			<HogFilter 
+			<HogFilter
+			hogs = { hogs } 
 			hogState = { hogState }
 			setHogState = { setHogState }
 			/>

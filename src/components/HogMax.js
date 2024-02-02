@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 
-function HogMax({ hog, isOpen, onClose, children, hogState, hogSelect, setHogSelect }) {
-    // const [hogSelect, setHogSelect] = useState("");
-
-console.log(hogState);
-console.log(isOpen);
-console.log(hogSelect);
-
-
+function HogMax({ hog, isOpen, onClose }) {
 
 
     return (
@@ -17,7 +10,7 @@ console.log(hogSelect);
                     <div className = "overlay-background" onClick = { onClose }>
                         <div className = "overlay-container">
                             <div className = "overlay-controls">
-                                <button className = "overlay-close" type = "button" onClick = { onClose }>X</button>            
+                                <button className = "overlay-close" type = "button" onClick = { onClose }></button>            
                             </div>
                         <h3>{ hog.name }</h3>  
                         <img src = { `${hog.image}` }></img>
